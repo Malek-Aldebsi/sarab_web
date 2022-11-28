@@ -46,13 +46,12 @@ class _ScrollerState extends State<Scroller> {
     ScrollController(),
     ScrollController(),
     ScrollController(),
-    ScrollController()
   ];
 
   ScrollController horizantalScroll = ScrollController();
 
-  List<double> subScrollerRead = [0, 0, 0, 0, 0, 0, 0];
-  List<double> _subScrollerRead = [0, 0, 0, 0, 0, 0, 0];
+  List<double> subScrollerRead = [0, 0, 0, 0, 0, 0];
+  List<double> _subScrollerRead = [0, 0, 0, 0, 0, 0];
 
   // 758.4000244140625
   // 758.4000244140625
@@ -148,7 +147,7 @@ class _ScrollerState extends State<Scroller> {
     image1 = Image.asset("images/ahmad.png");
     image2 = Image.asset("images/braille.jpg");
     image3 = Image.asset("images/rest.jpg");
-    image4 = Image.asset("images/closeGlass.png");
+    image4 = Image.asset("images/img.png");
     image5 = Image.asset("images/openGlass.png");
   }
 
@@ -453,89 +452,20 @@ class _ScrollerState extends State<Scroller> {
                   ),
                 ),
               ),
-              Stack(
-                children: [
-                  Container(
-                    height: widget.screenHeight,
-                    child: ListView(
-                      controller: horizantalScroll,
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Container(
-                          height: widget.screenHeight,
-                          width: widget.screenWidth,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: image1.image,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: widget.screenHeight,
-                          width: widget.screenWidth,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: image2.image,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: widget.screenWidth,
-                    height: widget.screenHeight,
-                    color: Colors.transparent,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ListView(
-                            controller: subScroller[4],
-                            physics: scrollTurn == 4
-                                ? ScrollPhysics()
-                                : NeverScrollableScrollPhysics(),
-                            children: [
-                              Container(
-                                height: widget.screenHeight,
-                              ),
-                              Container(
-                                height: widget.screenHeight,
-                                child: Center(
-                                  child: Text(
-                                    "Reading Anywhere,\nAnytime",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: widget.screenWidth / 17,
-                                        fontFamily: 'test1',
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
               Container(
                 width: widget.screenWidth,
                 height: widget.screenHeight,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: image3.image,
+                    image: image4.image,
                     fit: BoxFit.cover,
                   ),
                 ),
                 child: Stack(
                   children: [
                     ListView(
-                      controller: subScroller[5],
-                      physics: scrollTurn == 5
+                      controller: subScroller[4],
+                      physics: scrollTurn == 4
                           ? const ScrollPhysics()
                           : const NeverScrollableScrollPhysics(),
                       children: [
@@ -558,12 +488,82 @@ class _ScrollerState extends State<Scroller> {
                   ],
                 ),
               ),
+
+              // Stack(
+              //   children: [
+              //     Container(
+              //       height: widget.screenHeight,
+              //       child: ListView(
+              //         controller: horizantalScroll,
+              //         scrollDirection: Axis.horizontal,
+              //         children: [
+              //           Container(
+              //             height: widget.screenHeight,
+              //             width: widget.screenWidth,
+              //             decoration: BoxDecoration(
+              //               image: DecorationImage(
+              //                 image: image1.image,
+              //                 fit: BoxFit.cover,
+              //               ),
+              //             ),
+              //           ),
+              //           Container(
+              //             height: widget.screenHeight,
+              //             width: widget.screenWidth,
+              //             decoration: BoxDecoration(
+              //               image: DecorationImage(
+              //                 image: image2.image,
+              //                 fit: BoxFit.cover,
+              //               ),
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //     Container(
+              //       width: widget.screenWidth,
+              //       height: widget.screenHeight,
+              //       color: Colors.transparent,
+              //       child: Column(
+              //         children: [
+              //           Expanded(
+              //             child: ListView(
+              //               controller: subScroller[4],
+              //               physics: scrollTurn == 4
+              //                   ? ScrollPhysics()
+              //                   : NeverScrollableScrollPhysics(),
+              //               children: [
+              //                 Container(
+              //                   height: widget.screenHeight,
+              //                 ),
+              //                 Container(
+              //                   height: widget.screenHeight,
+              //                   child: Center(
+              //                     child: Text(
+              //                       "Reading Anywhere,\nAnytime",
+              //                       textAlign: TextAlign.center,
+              //                       style: TextStyle(
+              //                           fontSize: widget.screenWidth / 17,
+              //                           fontFamily: 'test1',
+              //                           fontWeight: FontWeight.w700,
+              //                           color: Colors.white),
+              //                     ),
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                   height: 80,
@@ -583,60 +583,60 @@ class _ScrollerState extends State<Scroller> {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Button(
-                      onPress: () {},
-                      text: "Light",
-                    ),
-                    Button(
-                      onPress: () {},
-                      text: "Air",
-                    ),
-                    Button(
-                      onPress: () {},
-                      text: "Nebula",
-                    ),
-                    Button(
-                      onPress: () {},
-                      text: "Developer",
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                        child: Container(
-                            padding: const EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: const Color(0xffBDBCBF).withOpacity(0.5),
-                            ),
-                            child: const Icon(
-                              Icons.account_circle_outlined,
-                              color: Colors.white,
-                              size: 20,
-                            )),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 6.0),
-                        child: Container(
-                            padding: const EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: const Color(0xffBDBCBF).withOpacity(0.5),
-                            ),
-                            child: const Icon(
-                              Icons.translate_rounded,
-                              color: Colors.white,
-                              size: 20,
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Button(
+                //       onPress: () {},
+                //       text: "Light",
+                //     ),
+                //     Button(
+                //       onPress: () {},
+                //       text: "Air",
+                //     ),
+                //     Button(
+                //       onPress: () {},
+                //       text: "Nebula",
+                //     ),
+                //     Button(
+                //       onPress: () {},
+                //       text: "Developer",
+                //     ),
+                //     InkWell(
+                //       onTap: () {},
+                //       child: Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                //         child: Container(
+                //             padding: const EdgeInsets.all(7),
+                //             decoration: BoxDecoration(
+                //               borderRadius: BorderRadius.circular(50),
+                //               color: const Color(0xffBDBCBF).withOpacity(0.5),
+                //             ),
+                //             child: const Icon(
+                //               Icons.account_circle_outlined,
+                //               color: Colors.white,
+                //               size: 20,
+                //             )),
+                //       ),
+                //     ),
+                //     InkWell(
+                //       onTap: () {},
+                //       child: Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                //         child: Container(
+                //             padding: const EdgeInsets.all(7),
+                //             decoration: BoxDecoration(
+                //               borderRadius: BorderRadius.circular(50),
+                //               color: const Color(0xffBDBCBF).withOpacity(0.5),
+                //             ),
+                //             child: const Icon(
+                //               Icons.translate_rounded,
+                //               color: Colors.white,
+                //               size: 20,
+                //             )),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           )
